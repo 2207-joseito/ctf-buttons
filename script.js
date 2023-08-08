@@ -1,12 +1,11 @@
 const checkboxes = document.querySelectorAll('[type="checkbox"]');
 const inputArray = [];
-const str = '@#$&';
+const str = '12,9,7,5,0,4';
 
 checkboxes.forEach((checkbox, index) => {
   checkbox.checked = false;
 
   checkbox.addEventListener('change', () => {
-    console.log(checkbox.checked);
     const label = checkbox.parentNode.querySelector('.label').textContent;
     if (checkbox.checked) {
       inputArray.push(label);
@@ -16,8 +15,8 @@ checkboxes.forEach((checkbox, index) => {
         inputArray.splice(labelIndex, 1);
       }
     }
-    
-    if (inputArray.join('') === str) {
+
+    if (inputArray.join(',') === str) {
       downloadFile('/file.txt');
       inputArray.length = 0;
       checkboxes.forEach(box => {
